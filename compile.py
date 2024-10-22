@@ -1,7 +1,7 @@
 # compile bookmarklet to bookmarklet.js
 # Usage: python compile.py
 
-import re
+from rjsmin import jsmin
 
 def compile_bookmarklet():
     """
@@ -28,13 +28,7 @@ def compile_bookmarklet():
     # extract bookmarklet
     bookmarklet = bookmarklet[start:end]
 
-    # remove comments
-    bookmarklet = re.sub(r'//.*', '', bookmarklet)
-    bookmarklet = re.sub(r'/\*.*?\*/', '', bookmarklet, flags=re.DOTALL)
-
-    # remove newlines
-    bookmarklet = re.sub(r'\n+', '', bookmarklet)
-    bookmarklet = re.sub(r'\s{1,}', ' ', bookmarklet)
+    bookmarklet = jsmin(bookmarklet)
 
     bookmarklet = 'javascript:' + bookmarklet
 
