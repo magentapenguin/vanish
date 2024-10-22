@@ -1,0 +1,1 @@
+javascript:(()=>{constnewwindow=window.open('about:blank','bookmarklet');newwindow.document.write(`<!DOCTYPEhtml><html><head><title>about:blank</title></head><body><iframesrc="${location.href}"style="width:100%;height:100%;border:none;"></iframe></body></html>`);newwindow.document.close();newwindow.focus();})();
