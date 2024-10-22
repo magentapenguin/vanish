@@ -32,8 +32,9 @@ def compile_bookmarklet():
     bookmarklet = re.sub(r'//.*', '', bookmarklet)
     bookmarklet = re.sub(r'/\*.*?\*/', '', bookmarklet, flags=re.DOTALL)
 
-    # remove spaces
-    bookmarklet = re.sub(r'\s+', '', bookmarklet)
+    # remove newlines
+    bookmarklet = re.sub(r'\n+', '', bookmarklet)
+    bookmarklet = re.sub(r'\s{1,}', ' ', bookmarklet)
 
     bookmarklet = 'javascript:' + bookmarklet
 
